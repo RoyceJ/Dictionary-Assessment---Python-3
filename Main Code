@@ -1,0 +1,74 @@
+#############################################
+#
+# First Name: Royce
+# Last  Name: Jamie
+#
+#############################################
+
+
+def load_parts(textfile):
+    parts_file = open(textfile, 'r')
+    parts = parts_file.readlines()
+    parts_file.close()
+    return parts
+
+def load_products(textfile):
+    products_file = open(textfile, 'r')
+    products = products_file.readlines()
+    products_file.close()
+    return products
+
+parts_data = load_parts('parts.txt')
+products_data = load_products('products.txt')
+
+partNames = {}
+
+partPrices = {}
+
+productNames = {}
+
+productParts = {}
+
+
+for line in parts_data:
+    splitted_line = line.split(',')
+    if len(splitted_line) == 1:
+        continue
+    ID = splitted_line[0].strip()
+    Name = splitted_line[1].strip()
+    Price = splitted_line[2].strip()
+    
+    partNames[ID] = Name
+    partPrices[ID] = Price
+
+
+
+for line in products_data:
+    splitted_line = line.split(',')
+    if len(splitted_line) == 1:
+        continue
+    ID = splitted_line[0].strip()
+    Name = splitted_line[1].strip()
+    Price = splitted_line[2].strip()
+    
+    productNames[ID] = Name
+    productParts[ID] = Price
+    
+
+##for x in parts_data:
+##     print(x)
+##     print('-------------------------------')
+##
+##run = True
+##
+##while run:
+##    command = input("Please give a command\n")
+##    
+##    if command[0] == 'a':
+##        command = command.split(' ')
+##        print("Command recieved: " + command[0])
+##        print("Searching for: " + command[1])
+##        
+##    if command[0] == 'b':
+##        print("Execute order 66")
+
