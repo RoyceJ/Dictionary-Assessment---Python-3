@@ -38,6 +38,7 @@ def parts_cost(bike_id):
         return cost
     except UnboundLocalError:
         return 'Invalid ID'
+    
 
 def load_parts(textfile):
     parts_file = open(textfile, 'r')
@@ -60,13 +61,6 @@ for line in parts_data:
     
     partNames[ID] = Name
     partPrices[ID] = Price
-    
-#############################################
-#
-# First Name: Royce
-# Last  Name: Jamie
-#
-#############################################
 
 
 ##def load_parts(textfile):
@@ -138,7 +132,7 @@ while run:
         print("############################")
         print(" ")
         print(" ")
-        response = input("Are you looking for another part? Yes/No\n")
+        response = input("Are you looking for another part? Yes/No.\n")
         if response == ("No"):
             run = False
         else:
@@ -161,12 +155,3 @@ while run:
             run = False
         else:
             continue
-        
-
-    
-        
-        
-
-
-        
-        
