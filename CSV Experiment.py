@@ -10,13 +10,14 @@ with open('products.txt', 'r') as d:
                                    fieldnames=fieldnames, 
                                    restkey='BikeParts', 
                                    skipinitialspace=True))
-    
+
 def get_name(ID):
     try: 
         if ID.startswith('bike'):
             for row in products:
                 if row['BikeID'] == ID:
                     name = row['BikeName']
+        
         else:
             for row in parts:
                 if row['PartCost'] == ID:
@@ -25,6 +26,21 @@ def get_name(ID):
     except UnboundLocalError:
         return 'Invalid ID'
 
+def get_id(NAME):
+    try:
+        if NAME.startswith('bike'):
+            for row in products:
+                if row['BikeName'] == NAME:
+                    name = row['BikeID']
+        else:
+            for row in parts:
+                if row['Partname'] == ID:
+                    name = row['PartID']
+                    
+        return name
+    except UnboundLocalError:
+        return 'Invalid ID'
+    
 def get_parts_price(ID):
     try: 
         if ID.startswith('bike'):

@@ -1,10 +1,3 @@
-#############################################
-#
-# First Name: Royce
-#
-#############################################
-
-
 def load_parts(textfile):   ##Establishes where the parts file is
     parts_file = open(textfile, 'r')
     parts = parts_file.readlines()

@@ -17,10 +17,24 @@ def get_name(ID):
             for row in products:
                 if row['BikeID'] == ID:
                     name = row['BikeName']
+        
         else:
             for row in parts:
-                if row['PartID'] == ID:
-                    name = row['Partname']
+                if row['PartCost'] == ID:
+                    name = row['PartCost']
+        return name
+    except UnboundLocalError:
+        return 'Invalid ID'
+
+def get_parts_price(ID):
+    try: 
+        if ID.startswith('bike'):
+            for row in products:
+                if row['BikeID'] == ID:
+                    name = row['BikePrice']
+        else:
+            return 'Invalid ID'
+                   
         return name
     except UnboundLocalError:
         return 'Invalid ID'
@@ -38,91 +52,16 @@ def parts_cost(bike_id):
         return cost
     except UnboundLocalError:
         return 'Invalid ID'
-    
-
-def load_parts(textfile):
-    parts_file = open(textfile, 'r')
-    parts = parts_file.readlines()
-    parts_file.close()
-    return parts
-
-parts_data = load_parts('parts.txt')
-
-partNames = {}
-partPrices = {}
-    
-for line in parts_data:
-    splitted_line = line.split(',')
-    if len(splitted_line) == 1:
-        continue
-    ID = splitted_line[0].strip()
-    Name = splitted_line[1].strip()
-    Price = splitted_line[2].strip()
-    
-    partNames[ID] = Name
-    partPrices[ID] = Price
+   
 
 
-##def load_parts(textfile):
-##    parts_file = open(textfile, 'r')
-##    parts = parts_file.readlines()
-##    parts_file.close()
-##    return parts
-##
-##def load_products(textfile):
-##    products_file = open(textfile, 'r')
-##    products = products_file.readlines()
-##    products_file.close()
-##    return products
-##
-##parts_data = load_parts('parts.txt')
-##products_data = load_products('products.txt')
-##
-##partNames = {}
-##
-##partPrices = {}
-##
-##productNames = {}
-##
-##productParts = {}
-##
-##
-##for line in parts_data:
-##    splitted_line = line.split(',')
-##    if len(splitted_line) == 1:
-##        continue
-##    ID = splitted_line[0].strip()
-##    Name = splitted_line[1].strip()
-##    Price = splitted_line[2].strip()
-##    
-##    partNames[ID] = Name
-##    partPrices[ID] = Price
-##
-##
-##
-##for line in products_data:
-##    splitted_line = line.split(',')
-##    if len(splitted_line) == 1:
-##        continue
-##    ID = splitted_line[0].strip()
-##    Name = splitted_line[1].strip()
-##    Price = splitted_line[2].strip()
-##    
-##    productNames[ID] = Name
-##    productParts[ID] = Price
-##    
-##
-##for x in parts_data:
-##     print(x)
-##     print('-------------------------------')
-##
 run = True
 
 while run:
     command1 = input("Are you looking for a Part or a Product?\n")
     
-    if command1 == 'product':
-        command2 = input("What is the ID of the part you're looking for?\n")
+    if command1 == 'Product':
+        command2 = input("What is the ID of the product you're looking for?\n")
         time.sleep(0.3)
         print(" ")
         print(" ")
@@ -139,14 +78,14 @@ while run:
             continue
             
         
-    if command1 == 'part':
+    if command1 == 'Part':
         command2 = input("What is the ID of the product you're looking for?\n")
         time.sleep(0.3)
         print(" ")
         print(" ")
         print("############################")
-        print("## This is a", partNames[command2])
-        print("## It costs", partPrices[command2], 'cents')
+        print("## This is a", get_name(command2))
+        print("## It costs", get_parts_price(command2), 'cents')
         print("############################")
         print(" ")
         print(" ")
