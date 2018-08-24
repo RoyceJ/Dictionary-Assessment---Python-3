@@ -90,7 +90,6 @@ while run:
                 time.sleep(0.3)
                 print("It costs:", get_price(productID))
                 print(" ")
-                continue
 
 
 
