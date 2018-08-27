@@ -11,21 +11,6 @@ with open('products.txt', 'r') as d:
                                    restkey='BikeParts',
                                    skipinitialspace=True))
 
-def load_products(textfile):    ##Establishes where the product file is
-    products_file = open(textfile, 'r')
-    products = products_file.readlines()
-    products_file.close()
-    return products
-
-parts_data = load_parts('parts.txt')
-products_data = load_products('products.txt')
-
-def load_products(textfile):    ##Establishes where the product file is
-    products_file = open(textfile, 'r')
-    products = products_file.readlines()
-    products_file.close()
-    return products
-
 def get_name(ID):
     try:
         if ID.startswith('bike'):
@@ -76,15 +61,6 @@ def get_price(ID):
     except UnboundLocalError:
         return 'Invalid ID'
 
-for line in products_data:          ##Copied from above to handle the product queries & strips unnecessary info.
-    splitted_line = line.split(',')
-    if len(splitted_line) == 1:
-        continue
-    ID = splitted_line[0].strip()
-    Name = splitted_line[1].strip()
-    Price = splitted_line[2].strip()
-
-    productNames[ID] = Name
 
 run = True
 

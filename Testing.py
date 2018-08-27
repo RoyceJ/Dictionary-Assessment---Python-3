@@ -11,18 +11,6 @@ with open('products.txt', 'r') as d:
                                    restkey='BikeParts',
                                    skipinitialspace=True))
 
-def load_products(textfile):    ##Establishes where the product file is
-    products_file = open(textfile, 'r')
-    products = products_file.readlines()
-    products_file.close()
-    return products
-
-products_data = load_products('products.txt')
-
-productNames = {}
-
-productParts = {}
-
 def get_name(ID):
     try:
         if ID.startswith('bike'):
@@ -73,6 +61,17 @@ def get_price(ID):
     except UnboundLocalError:
         return 'Invalid ID'
 
+def get_parts(ID):
+    try:
+        if row ['BikeID'] == ID:
+            cost = 0
+            for row in products:
+                if item in row['BikeParts']:
+                    part_id, qty = item.split(':')
+                    for row in parts:
+                        if part_id == row['PartID']:
+                            cost += int(row['PartCost'] * int(qty))
+
 run = True
 
 while run:
@@ -121,13 +120,12 @@ while run:
             print("############################")
             print("## This is a", get_name(command4))
             print("## It costs", get_price(command4), 'cents')
-            print("##")
-            print("## To build this", get_name(command4), "you will need: ")
-            print("## ")
+            print(" ")
+            print(" To build this", get_name(command4), "you will need: ")
             print("############################")
             print(" ")
             print(" ")
-            continue:
+            continue
         else:
             break
     except UnboundLocalError:
