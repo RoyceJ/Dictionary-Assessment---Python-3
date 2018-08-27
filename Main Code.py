@@ -61,7 +61,6 @@ def get_price(ID):
     except UnboundLocalError:
         return 'Invalid ID'
 
-
 run = True
 
 while run:
@@ -110,8 +109,8 @@ while run:
             print("############################")
             print("## This is a", get_name(command4))
             print("## It costs", get_price(command4), 'cents')
-            print(" ")
-            print(" To build this", get_name(command4), "you will need: ")
+            print("##")
+            print("## To build this", get_name(command4), "you will need: ")
             print("############################")
             print(" ")
             print(" ")
